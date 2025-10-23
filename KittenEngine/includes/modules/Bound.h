@@ -32,15 +32,15 @@ namespace Kitten {
 		}
 
 		KITTEN_FUNC_DECL inline bool contains(const vec<dim, Real, defaultp>& point) const {
-			return all(lessThanEqual(min, point)) && all(greaterThanEqual(max, point));
+			return glm::all(glm::lessThanEqual(min, point)) && glm::all(glm::greaterThanEqual(max, point));
 		}
 
 		KITTEN_FUNC_DECL inline bool contains(const Bound<dim, Real>& b) const {
-			return all(lessThanEqual(min, b.min)) && all(greaterThanEqual(max, b.max));
+			return glm::all(glm::lessThanEqual(min, b.min)) && glm::all(glm::greaterThanEqual(max, b.max));
 		}
 
 		KITTEN_FUNC_DECL inline bool intersects(const Bound<dim, Real>& b) const {
-			return !(any(lessThanEqual(max, b.min)) || any(greaterThanEqual(min, b.max)));
+			return !(glm::any(glm::lessThanEqual(max, b.min)) || glm::any(glm::greaterThanEqual(min, b.max)));
 		}
 
 		KITTEN_FUNC_DECL inline void pad(Real padding) {
